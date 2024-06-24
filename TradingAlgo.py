@@ -17,7 +17,7 @@ dataF.iloc[:,:]
 
 #Define function to collect candles 
 def get_candles(n):
-    access_token='f3cbe7bdde0ae05f50947205f54ac067-975def08e0973e903b812fe047bf52ef'
+    access_token='####'
     client = CandleClient(access_token, real=False)
     collector = client.get_collector(Pair.EUR_USD, Gran.M15)
     candles = collector.grab(n)
