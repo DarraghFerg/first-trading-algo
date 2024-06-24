@@ -11,22 +11,19 @@ from oanda_candles import Pair, Gran, CandleClient
 '''from config import access_token, accountID''' #will write config file for api keys
 
 ''''''''''''''''''''''''''
-
-dataF = yf.download("EURUSD=X", start="2024-6-5", end="2024-6-7", interval='1h')
+#Collect Instrument Data from Yahoo Finance
+dataF = yf.download("EURUSD=X", start="2024-6-21", end="2024-6-24", interval='15m')
 dataF.iloc[:,:]
 
-
+#Define function to collect candles 
 def get_candles(n):
-    access_token='#####'
+    access_token='f3cbe7bdde0ae05f50947205f54ac067-975def08e0973e903b812fe047bf52ef'
     client = CandleClient(access_token, real=False)
     collector = client.get_collector(Pair.EUR_USD, Gran.M15)
     candles = collector.grab(n)
     return candles
 
+#Collect candles and format specific attribute as float
 candles = get_candles(3)
 for candle in candles:
-    print(float(str(candle.bid.o)))
-
-
-
-
+    print(float(str(candle.ask.o)))
